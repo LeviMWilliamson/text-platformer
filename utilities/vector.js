@@ -1,3 +1,6 @@
+/**
+ * The Vector class is a mutable 2D vector data type use to represent 2D coordinates.
+ */
 class Vector {
     /**
      * @param {Vector} vector1
@@ -7,6 +10,7 @@ class Vector {
     static add( vector1, vector2 ) {
         return new Vector( vector1.x + vector2.x, vector1.y + vector2.y )
     }
+
     /**
      * @param {Vector} vector1
      * @param {Vector} vector2
@@ -15,6 +19,7 @@ class Vector {
     static subtract( vector1, vector2 ) {
         return new Vector( vector1.x - vector2.x, vector1.y - vector2.y )
     }
+
     /**
      * Performs a dot product on two vectors.
      * @param {Vector} vector1
@@ -27,7 +32,7 @@ class Vector {
     /**
      * Performs a 3D cross-product on 2D vectors by assuming that the z-value of both vectors is zero.
      * The scalar output represents the z-value of the cross-product vector.
-     * This output is appropriate because 
+     * This output is appropriate because the 3D output would not contain x and y values.
      * @param {Vector} vector1 
      * @param {Vector} vector2 
      * @returns {number}
@@ -56,23 +61,37 @@ class Vector {
     }
 
     /**
-     * Future implementation idea:
-     * Would it be useful to cache this value?
+     * @returns {number} The magnitude of the vector.
      */
     get magnitude() {
+        /**
+         * Future implementation idea:
+         * Would it be useful to cache this value?
+         */
         return Math.sqrt( this.x**2 + this.y**2 )
     }
 
+    /**
+     * @returns {Vector} The current vector normalized; made to have a magnitude of one; a unit vector.
+     */
     get normalized() {
         const magnitude = this.magnitude
         return new Vector( this.x/magnitude, this.y/magnitude )
     }
 
+    /**
+     * Add another vector to this vector.
+     * @param {Vector} vector 
+     */
     add( vector ) {
         this.x += vector.x
         this.y += vector.y
     }
 
+    /**
+     * Subtract another vector from this vector.
+     * @param {Vector} vector 
+     */
     subtract( vector ) {
         this.x -= vector.x
         this.y -= vector.y
